@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Products | ElectroHub{% endblock %}
+{% block content %}
+<section class="page-header"><div class="container"><p class="eyebrow">Catalogue</p><h1>Explore our products</h1><p>Search by product, brand or SKU and filter by category.</p></div></section>
+<section class="section container">
+  <form class="filter-bar" method="get">
+    <label><span class="sr-only">Search products</span><input name="q" value="{{ search }}" placeholder="Search products or brands"></label>
+    <label><span class="sr-only">Category</span><select name="category"><option value="">All categories</option>{% for c in categories %}<option value="{{ c.category_id }}" {% if selected_category == c.category_id %}selected{% endif %}>{{ c.name }}</option>{% endfor %}</select></label>
+    <button class="button">Search</button>
+  </form>
+  <p class="result-count">{{ products|length }} product(s) found</p>
+  <div class="product-grid">{% for product in products %}{% include "shop/_product_card.html" %}{% else %}<div class="empty-state"><h2>No matching products</h2><p>Try another search or category.</p></div>{% endfor %}</div>
+</section>
+{% endblock %}
+

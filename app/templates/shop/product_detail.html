@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} | ElectroHub{% endblock %}
+{% block content %}
+<section class="section container product-detail">
+  <div class="detail-image"><img src="{{ product.image_url or 'https://placehold.co/800x600?text=Product' }}" alt="{{ product.name }}"></div>
+  <div class="detail-content">
+    <span class="tag">{{ product.category.name }}</span><p class="muted">{{ product.brand }} • SKU {{ product.sku }}</p>
+    <h1>{{ product.name }}</h1><p class="lead">{{ product.description }}</p><div class="detail-price">${{ '%.2f'|format(product.price) }}</div>
+    <p class="stock {{ 'in-stock' if product.stock else 'out-stock' }}">{{ product.stock }} available</p>
+    {% if product.stock %}<form method="post" action="{{ url_for('cart.add', product_id=product.product_id) }}" class="purchase-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label>Quantity<input type="number" name="quantity" min="1" max="{{ product.stock }}" value="1"></label><button class="button">Add to cart</button>
+    </form>{% else %}<button class="button" disabled>Out of stock</button>{% endif %}
+  </div>
+</section>
+{% endblock %}
+

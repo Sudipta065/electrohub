@@ -1,0 +1,12 @@
+<article class="product-card">
+  <a class="product-image" href="{{ url_for('shop.product_detail', product_id=product.product_id) }}">
+    <img src="{{ product.image_url or 'https://placehold.co/600x450?text=Product' }}" alt="{{ product.name }}">
+  </a>
+  <div class="product-body">
+    <span class="tag">{{ product.category.name }}</span>
+    <h3><a href="{{ url_for('shop.product_detail', product_id=product.product_id) }}">{{ product.name }}</a></h3>
+    <p class="muted">{{ product.brand or 'ElectroHub' }}</p>
+    <div class="product-footer"><strong>${{ '%.2f'|format(product.price) }}</strong><span class="stock {{ 'in-stock' if product.stock else 'out-stock' }}">{{ product.stock }} in stock</span></div>
+  </div>
+</article>
+

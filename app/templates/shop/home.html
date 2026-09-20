@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}ElectroHub | Better tech, clearly chosen{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Technology made simple</p>
+      <h1>Find the right technology for everyday life.</h1>
+      <p class="lead">Explore trusted electronics, transparent pricing and stock-aware ordering in one responsive store.</p>
+      <div class="actions">
+        <a class="button" href="{{ url_for('shop.catalog') }}">Shop products</a>
+        <a class="button button-secondary" href="#featured">View featured</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="hero-card"><span>New collection</span><strong>Smart choices.<br>Better value.</strong></div>
+    </div>
+  </div>
+</section>
+<section class="section container" id="featured">
+  <div class="section-heading"><div><p class="eyebrow">Featured products</p><h2>Popular right now</h2></div><a href="{{ url_for('shop.catalog') }}">See all →</a></div>
+  <div class="product-grid">
+    {% for product in products %}{% include "shop/_product_card.html" %}{% else %}<p>No products yet. Run the database seed command.</p>{% endfor %}
+  </div>
+</section>
+{% endblock %}
+
