@@ -2,7 +2,7 @@
 
 ElectroHub is a three-tier/MVC coursework application for an online electronics store. It uses a Flask web layer, reusable service layer, and SQLAlchemy data layer. The schema is based on the supplied `jbhifi.sql` design and remains portable between local SQLite and hosted PostgreSQL.
 
-The implementation intentionally keeps the code small and direct for an academic demonstration. See `SIMPLE_VIVA_GUIDE.md` for the easiest explanation of the structure and main workflows.
+The implementation intentionally keeps the code small and direct for an academic demonstration.
 
 ## Implemented features
 
